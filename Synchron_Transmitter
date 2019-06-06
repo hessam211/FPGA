@@ -1,0 +1,41 @@
+module transmitter (input clk, start, [7:0] data, output reg sharedClk, done, [7:0] serialOut);
+
+reg [7:0] dIn;
+reg [3:0] cnt;
+reg transmit;
+
+always @(posedge start) begin //latch oke
+//Not sure about using blocking or non-blocking
+	dIn <= data;
+	transmit <= 1;
+	cnt <= 0;
+end
+
+
+always @(posedge clk) begin
+	if (transmit && cnt <= 8) begin
+		sharedClk <= 1;
+		
+		if (cnt>=7)
+			serialOut <= dIn[7];
+		else
+			serialOut <= dIn[cnt];
+
+		cnt <= cnt + 1;
+	end
+
+	if (cnt==9)
+	begin
+		transmit <= 0;
+		done <= 1;
+	end
+	if (done == 1) begin
+		done <= 0;
+		cnt <= 0;
+		serialOut <= 0;
+	end
+end
+
+always @(negedge clk) sharedClk <= 0;
+
+endmodule
