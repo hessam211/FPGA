@@ -17,14 +17,14 @@ The 8-bit full adder is a combinational circuit that adds two 8-bit binary numbe
 ### Day Counter
 The day counter is a sequential circuit that counts the number of days in a month. 
 
-Multiplexer
+### Multiplexer
 The multiplexer is a combinational circuit that selects one of several input signals and outputs it. 
 
-PWM
+### PWM
 The PWM (Pulse Width Modulation) module generates a square wave signal with varying duty cycle. 
 
-Synchronous Transmitter
+### Synchronous Transmitter
 The synchronous transmitter is a sequential circuit that transmits data to a receiver using a synchronous protocol. 
 
-Synchronous Receiver
+### Synchronous Receiver
 The synchronous receiver is a sequential circuit that receives data from a transmitter using a synchronous protocol. 
